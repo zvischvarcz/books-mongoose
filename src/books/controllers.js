@@ -106,14 +106,9 @@ const deleteAllBooks = async (req, res) => {
 
 const updateBook = async (req, res) => {
     try {
-        let searchedTitle = {title: req.body.title};
         const updatedBook =  await Book.findOneAndUpdate(
-            searchedTitle,
-            {
-                title: req.body.newTitle,
-                author: req.body.newAuthor,
-                genre: req.body.newGenre
-            },
+            {title: req.body.title},
+            {[req.body.key]: req.body.value},
             {new: true}
         );
         const successResponse = {
