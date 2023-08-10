@@ -14,15 +14,6 @@ app.use(express.json());
 
 app.use(bookRouter)
 
-app.get("/health", (req, res) => {
-    res.status(201).json({message: "API is working"});
-});
-
-
-app.get("/home", (req, res) => {
-    res.send("<h1>This is the home page</h1>");
-});
-
 app.get("*", (req, res) => {
     res.status(404).send("<h1>404 page not found</h1>");
 });
